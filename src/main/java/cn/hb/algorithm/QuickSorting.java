@@ -25,7 +25,7 @@ public class QuickSorting {
     public static void main(String[] args) {
         int[] arr = {880900,918767,427094,223627,665730,924322};
         System.out.println(Arrays.toString(arr));
-        quickSorting(arr, 0, arr.length);
+        quickSorting(arr, 0, arr.length - 1);
     }
 
     /**
