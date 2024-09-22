@@ -25,14 +25,13 @@ public class QuickSorting {
     public static void main(String[] args) {
         int[] arr = {880900,918767,427094,223627,665730,924322};
         System.out.println(Arrays.toString(arr));
-        System.out.println(Arrays.toString(arr));
+        quickSorting(arr, 0, arr.length);
     }
 
     /**
      * 快速排序.
      *
      * @param arr the arr
-     * @return the int [ ]
      */
     public static void quickSorting(int[] arr, int left, int right) {
 
