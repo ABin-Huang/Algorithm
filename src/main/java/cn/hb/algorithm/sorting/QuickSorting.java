@@ -1,7 +1,8 @@
-package cn.hb.algorithm;
+package cn.hb.algorithm.sorting;
 
 import java.util.Arrays;
-import java.util.Random;
+
+import static cn.hb.utils.RandomUtil.RANDOM;
 
 /**
  * 原始快速排序--通过递归方式.
@@ -11,12 +12,6 @@ import java.util.Random;
  * @description
  */
 public class QuickSorting {
-
-    /**
-     * 生成随机数
-     */
-    private static final Random RANDOM = new Random();
-
     /**
      * 统计选择划分点次数
      */
@@ -64,6 +59,31 @@ public class QuickSorting {
         quickSorting(arr, left, dividePoint - 1);
         quickSorting(arr, dividePoint + 1, right);
 
+    }
+
+    /**
+     * 快速排序--使用双指针
+     *
+     * @param arr   arr
+     * @param left  左边
+     * @param right 正确
+     */
+    public static void quickSortingTwo(int[] arr, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        int i = left;
+        int j = right;
+        int pivot = arr[left];
+        while (i < j) {
+            while (i < j && arr[j] >= pivot) {
+                j--;
+            }
+            while (i < j && arr[i] <= pivot) {
+                i++;
+            }
+            if (i <j) {}
+        }
     }
 
     public static void swap(int[] arr, int i, int j) {
