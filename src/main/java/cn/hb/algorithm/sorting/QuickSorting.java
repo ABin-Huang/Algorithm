@@ -2,6 +2,7 @@ package cn.hb.algorithm.sorting;
 
 import java.util.Arrays;
 
+import static cn.hb.utils.ArraysUtil.swap;
 import static cn.hb.utils.RandomUtil.RANDOM;
 
 /**
@@ -119,11 +120,5 @@ public class QuickSorting {
         // 递归调用快速排序
         quickSortingTwo(arr, left, i - 1);
         quickSortingTwo(arr, i + 1, right);
-    }
-
-    public static void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
     }
 }
