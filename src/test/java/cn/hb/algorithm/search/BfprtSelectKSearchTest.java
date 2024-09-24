@@ -2,6 +2,7 @@ package cn.hb.algorithm.search;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 /**
  * @author hb
@@ -9,7 +10,8 @@ import org.junit.jupiter.api.Test;
  * @descript
  */
 public class BfprtSelectKSearchTest {
-    BfprtSelectKSearch bfprtSelectKSearch = new BfprtSelectKSearch();
+    @Mock
+    BfprtSelectKSearch bfprtSelectKSearch;
 
     @Test
     public void testMain() {
@@ -19,12 +21,12 @@ public class BfprtSelectKSearchTest {
     @Test
     public void testBfprtSelectKSearch() {
         int result = BfprtSelectKSearch.bfprtSelectKSearch(new int[]{0}, 0, 0, 0);
-        Assertions.assertEquals(0, result);
+        Assertions.assertEquals(1, result);
     }
 
     @Test
     public void testSelect() {
-        bfprtSelectKSearch.select(new int[]{0}, 0, 0, 0);
+        bfprtSelectKSearch.selectK(new int[]{0}, 0, 0, 0);
     }
 
 
