@@ -59,8 +59,6 @@ public class BfprtSelectKSearch {
         int[] arr = {9,8,7,6,5,5,4,3,32,2,1,45,657,9};
         selectK(arr, 0, arr.length - 1, 3);
         System.out.println(Arrays.toString(arr));
-        int i = 9/10;
-        System.out.println(i);
     }
 
     public static int bfprtSelectKSearch(int L[], int left, int right, int k) {

@@ -31,13 +31,14 @@ public class QuickSorting {
     private static int rounds = 1;
 
     public static void main(String[] args) {
-//        int[] arr = {880900,918767,427094,223627,665730,924322};
-//        System.out.println(Arrays.toString(arr));
-//        quickSorting(arr, 0, arr.length - 1);
+        int[] arr2 = {1,2,2,2,6,7,8,34,3,3,3,3,5,6,7,1,2,4,988};
+        int[] arr = {880900,918767,427094,223627,665730,924322};
+        System.out.println(Arrays.toString(arr2));
+        quickSorting(arr2, 0, arr2.length - 1);
 
         int[] arr1 = {880900,918767,427094,223627,665730,924322};
-        quickSortingTwo(arr1, 0, arr1.length - 1);
-        System.out.println(Arrays.toString(arr1));
+        quickSortingTwo(arr2, 0, arr2.length - 1);
+        //System.out.println(Arrays.toString(arr2));
     }
 
     /**
