@@ -1,4 +1,4 @@
-package cn.hb.algorithm;
+package cn.hb.algorithm.ConvexHull;
 
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ import java.util.Arrays;
  *  如果b在a的逆时针方向，则sinθ为正，叉积也就为正，在我们逆时针遍历的情况下，如果b在a的顺时针方向，则p1点必定不是凸包上的点，反之则是在凸包上的点。
  *
  */
-public class ConvexHull {
+public class Grahanm {
     public static void main(String[] args) {
         Point[] points = {new Point(0, 0), new Point(1, 1), new Point(2, 0),
                 new Point(1, -1), new Point(0, -2), new Point(-1, -1),

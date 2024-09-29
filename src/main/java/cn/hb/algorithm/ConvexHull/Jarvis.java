@@ -1,4 +1,4 @@
-package cn.hb.algorithm;
+package cn.hb.algorithm.ConvexHull;
 
 import com.google.common.collect.Lists;
 
