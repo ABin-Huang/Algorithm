@@ -10,53 +10,62 @@ import java.util.Arrays;
 
 public class TournamentAlgorithm {
 
-    public static int buildTournamentTree(int[] arr, int[] tree, int index, int n) {
-        if (index == n) {
-            return arr[index - n];
-        } else if (index > n) {
-            return arr[index - n - 1];
-        }
-//        System.out.println(index);
-        int left = buildTournamentTree(arr, tree, index * 2 + 1, n);
-        int right = buildTournamentTree(arr, tree, index * 2 + 2, n);
-        tree[index] = Math.max(left, right);
-//        System.out.println(left + ", " + right);
-
-        return tree[index];
-    }
-
-    // 查找第二大值
-    public static int findSecondMax(int[] a, int[] tree) {
-        int secondmax = -0x3f3f3f3f;
-        //我们将从直接输给最大值的数中找到第二大的数
-        for (int i = 0; i < a.length - 1; ) {
-            if (tree[i] == tree[2 * i + 1]) {
-                if (secondmax < tree[2 * i + 2]) {
-                    secondmax = tree[2 * i + 2];
-                }
-                i = i * 2 + 1;
-            } else {
-                if (secondmax < tree[2 * i + 1]) {
-                    secondmax = tree[2 * i + 1];
-                }
-                i = i * 2 + 2;
-            }
-            System.out.println(secondmax +" index: " +i);
-        }
-        return secondmax;
-    }
-
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 12, 34, 123};
-        int[] tree = new int[arr.length * 2];
-        for (int i = tree.length - 1; i >= arr.length; i--)
-            tree[i] = arr[i - arr.length];
-        int max = buildTournamentTree(arr, tree, 0, arr.length);
-        System.out.println(max);
-        System.out.println(Arrays.toString(tree));
+        int[] numbers = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5};
+        Pair<Integer, Integer> result = findTwoLargest(numbers);
+        System.out.println("The largest number is: " + result.first);
+        System.out.println("The second largest number is: " + result.second);
+    }
 
-        // 查找第二大值
-        int second_max = findSecondMax(arr, tree);
-        System.out.println("第二大值: " + second_max);
+    // 找出数组中最大的两个数
+    public static Pair<Integer, Integer> findTwoLargest(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            throw new IllegalArgumentException("Array must contain at least two elements.");
+        }
+
+        // 构建虚拟的满二叉树
+        int n = arr.length;
+        // 满二叉树的大小
+        int treeSize = 2 * n - 1;
+        int[] tournamentTree = new int[treeSize];
+
+        // 将原始数据复制到二叉树的叶节点
+        System.arraycopy(arr, 0, tournamentTree, n - 1, n);
+
+        // 填充非叶节点
+        for (int i = n - 2; i >= 0; i--) {
+            tournamentTree[i] = Math.max(tournamentTree[2 * i + 1], tournamentTree[2 * i + 2]);
+        }
+
+        System.out.println(Arrays.toString(tournamentTree));
+
+        // 最大值位于根节点
+        int max = tournamentTree[0];
+        int secondMax = Integer.MIN_VALUE;
+
+        // 回溯查找第二大值
+        int index = 0;
+        while (index < n - 1) {
+            int leftChild = 2 * index + 1;
+            int rightChild = 2 * index + 2;
+
+            // 如果左子节点是当前节点的最大贡献者
+            if (tournamentTree[leftChild] == max) {
+                System.out.println(secondMax +":" +index);
+                secondMax = Math.max(secondMax, tournamentTree[rightChild]);
+                index = leftChild;
+            } else { // 否则右子节点是最大贡献者
+                System.out.println(secondMax +":" +index);
+                secondMax = Math.max(secondMax, tournamentTree[leftChild]);
+                index = rightChild;
+            }
+        }
+        System.out.println(secondMax +":" +index);
+
+        return new Pair<>(max, secondMax);
+    }
+
+    // 简单的Pair类用于返回两个值
+    public record Pair<T1, T2>(T1 first, T2 second) {
     }
 }
